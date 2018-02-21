@@ -48,7 +48,7 @@ namespace MuseRobotic {
 	 * @param speed how fast to spin the motor
      */
     //% blockId=muselab_motor_on
-    //% block="Turn %motor|on direction %dir|speed %speed"
+    //% block="Turn %motor| on direction %dir|speed %speed"
     //% speed.min=0 speed.max=100
 	//% weight=70	
     export function motorOn(motor: Motors, dir: MotorDirection, speed: number): void {
@@ -119,6 +119,15 @@ namespace MuseRobotic {
     export function control360Servo(pin: Servo, direction: ServoDirection, speed: number): void {
         serial.writeLine("(AT+servo_360?pin="+pin+"&direction="+direction+"&speed="+speed+")");
     }
-		
+	
+	//% blockId="readjoystick_x" block="Read joystick x-axis value"
+    export function ReadJoystick_x(): number {
+        return pins.analogReadPin(AnalogPin.P0);
+    }
+	
+	//% blockId="readjoystick_y" block="Read joystick y-axis value"
+    export function ReadJoystick_y(): number {
+        return pins.analogReadPin(AnalogPin.P1);
+    }
 	
 }
