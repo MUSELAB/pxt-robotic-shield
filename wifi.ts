@@ -48,7 +48,7 @@ namespace MuseRobotic {
 	 * @param speed how fast to spin the motor
      */
     //% blockId=muselab_motor_on
-    //% block="Turn %motor| on direction %dir|speed %speed"
+    //% block="Turn on %motor| direction %dir|speed %speed"
     //% speed.min=0 speed.max=100
 	//% weight=70	
 	//% blockGap=7
