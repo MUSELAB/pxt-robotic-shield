@@ -109,7 +109,7 @@ namespace MuseRobotic {
 	//% degree.min=0 degree.max=180
 	//% weight=50	
     export function control180Servo(pin: Servo, degree: number): void {
-        serial.writeLine("(AT+servo_180?pin="+Servo+"&degree="+degree+")");
+        serial.writeLine("(AT+servo_180?pin="+pin+"&degree="+degree+")");
     }	
 	
     //%blockId=muselab_360servo
@@ -117,7 +117,7 @@ namespace MuseRobotic {
 	//% speed.min=0 speed.max=100
 	//% weight=45	
     export function control360Servo(pin: Servo, direction: ServoDirection, speed: number): void {
-        serial.writeLine("(AT+servo_360?pin="+Servo+"&direction="+ServoDirection+"&speed="+speed+")");
+        serial.writeLine("(AT+servo_360?pin="+pin+"&direction="+direction+"&speed="+speed+")");
     }
 		
 	
