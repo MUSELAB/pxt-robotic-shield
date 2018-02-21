@@ -120,14 +120,28 @@ namespace MuseRobotic {
         serial.writeLine("(AT+servo_360?pin="+pin+"&direction="+direction+"&speed="+speed+")");
     }
 	
-	//% blockId="readjoystick_x" block="Read joystick x-axis value"
+	//% blockId="readjoystick_x" block="Joystick x-axis value"
+	//% weight=44
     export function ReadJoystick_x(): number {
         return pins.analogReadPin(AnalogPin.P0);
     }
 	
-	//% blockId="readjoystick_y" block="Read joystick y-axis value"
+	//% blockId="readjoystick_y" block="Joystick y-axis value"
+	//% weight=43
     export function ReadJoystick_y(): number {
         return pins.analogReadPin(AnalogPin.P1);
+    }
+	
+	//% blockId="readredbutton" block="Red press button"
+	//% weight=42
+    export function ReadRedbutton(): number {
+        return pins.digitalReadPin(DigitalPin.P12);
+    }
+	
+	//% blockId="readgreenbutton" block="Green press button"
+	//% weight=41
+    export function ReadGreenbutton(): number {
+        return pins.digitalReadPin(DigitalPin.P8);
     }
 	
 }
