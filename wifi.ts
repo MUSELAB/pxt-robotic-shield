@@ -27,6 +27,7 @@ namespace MuseRobotic {
     //% blockId=muselab_motor_on
     //% block="Turn %motor|on direction %dir|speed %speed"
     //% speed.min=0 speed.max=100
+	//% weight=70	
     export function motorOn(motor: Motors, dir: MotorDirection, speed: number): void {
 		
         let OutputVal = Math.clamp(0, 100, speed) * 10;
@@ -66,6 +67,7 @@ namespace MuseRobotic {
      */
     //% blockId=muselab_motor_off
     //% block="Turn off %motor"
+	//% weight=60	
     export function motorOff(motor: Motors): void {
         switch (motor) {
             case Motors.Motor1:
