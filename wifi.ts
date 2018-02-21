@@ -115,7 +115,7 @@ namespace MuseRobotic {
 	
 	//%subcategory=More
     //%blockId=muselab_360servo
-    //% block="Control 360° servo pin %pin| direction %direction| speed %speed"
+    //% block="Control 361° servo pin %pin| direction %direction| speed %speed"
 	//% speed.min=0 speed.max=100
 	//% weight=45	
     export function control360Servo(pin: Servo, direction: ServoDirection, speed: number): void {
