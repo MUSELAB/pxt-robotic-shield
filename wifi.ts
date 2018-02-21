@@ -95,48 +95,6 @@ namespace MuseRobotic {
         serial.writeLine("(AT+servo_360?pin="+pin+"&direction="+direction+"&speed="+speed+")");
     }
 
-	//%subcategory=More
-    //%blockId=muselab_battery
-    //%block="Get battery level"
-	//% weight=40	
-    export function sendBattery(): void {
-        serial.writeLine("(AT+battery)");
-    }	
 	
-		
-	//%subcategory=More
-    //%blockId=muselab_version
-    //%block="Get firmware version"
-	//% weight=39	
-    export function sendVersion(): void {
-        serial.writeLine("(AT+version)");
-    }
-	
-	// -------------- 5. General ----------------
-	//%subcategory=More
-    //%blockId=muselab_at
-    //%block="Send AT command %command"
-	//% weight=30	
-    export function sendAT(command: string): void {
-        serial.writeLine(command);
-		flag = false
-    }
-	
-	//%subcategory=More
-    //%blockId=muselab_test
-    //%block="Send AT test"
-	//% weight=20	
-    export function sendTest(): void {
-        serial.writeLine("(AT+testing)");
-    }
-	
-	//%subcategory=More
-    //%blockId=muselab_deep_sleep
-    //%block="Set deep sleep %second| second"
-	//% weight=15	
-    export function setDeepSleep(second: number): void {
-        serial.writeLine("(AT+deepsleep?time="+second+")");
-    }	
-		
 	
 }
