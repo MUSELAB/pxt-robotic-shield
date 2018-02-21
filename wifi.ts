@@ -51,6 +51,7 @@ namespace MuseRobotic {
     //% block="Turn %motor| on direction %dir|speed %speed"
     //% speed.min=0 speed.max=100
 	//% weight=70	
+	//% blockGap=7
     export function motorOn(motor: Motors, dir: MotorDirection, speed: number): void {
 		
         let OutputVal = Math.clamp(0, 100, speed) * 10;
@@ -90,7 +91,7 @@ namespace MuseRobotic {
      */
     //% blockId=muselab_motor_off
     //% block="Turn off %motor"
-	//% weight=60
+	//% weight=60	
     export function motorOff(motor: Motors): void {
         switch (motor) {
             case Motors.Motor1:
@@ -107,8 +108,8 @@ namespace MuseRobotic {
     //%blockId=muselab_180servo
     //% block="Control 180° servo pin %pin| degree %degree"
 	//% degree.min=0 degree.max=180
-	//% weight=50		
-	//% blockGap=9
+	//% weight=50
+	//% blockGap=7	
     export function control180Servo(pin: Servo, degree: number): void {
         serial.writeLine("(AT+servo_180?pin="+pin+"&degree="+degree+")");
     }	
@@ -123,25 +124,28 @@ namespace MuseRobotic {
 	
 	//% blockId="readjoystick_x" block="Joystick x-axis value"
 	//% weight=44
-	//% blockGap=9
+	//% blockGap=7
     export function ReadJoystick_x(): number {
         return pins.analogReadPin(AnalogPin.P0);
     }
 	
 	//% blockId="readjoystick_y" block="Joystick y-axis value"
 	//% weight=43
+	//% blockGap=7
     export function ReadJoystick_y(): number {
         return pins.analogReadPin(AnalogPin.P1);
     }
 	
 	//% blockId="readredbutton" block="Red press button"
 	//% weight=42
+	//% blockGap=7
     export function ReadRedbutton(): number {
         return pins.digitalReadPin(DigitalPin.P12);
     }
 	
 	//% blockId="readgreenbutton" block="Green press button"
 	//% weight=41
+	//% blockGap=7
     export function ReadGreenbutton(): number {
         return pins.digitalReadPin(DigitalPin.P8);
     }
