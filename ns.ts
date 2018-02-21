@@ -1,6 +1,6 @@
 /**
- * MuseIoT blocks
+ * MuseRobotic blocks
  */
-//% weight=100 color=#F59E20
+//% weight=105 color=#F59E20
 namespace MuseRobotic {
 }

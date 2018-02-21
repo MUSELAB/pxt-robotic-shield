@@ -1,7 +1,7 @@
 {
-    "name": "pxt-muselab",
+    "name": "pxt-muselab-plugin",
     "version": "0.0.1",
-    "description": "Blocks to simplify using muselab products in PXT",
+    "description": "Plugin for MuseIoT using muselab products in PXT",
     "license": "MIT",
     "dependencies": {
         "core": "*"
