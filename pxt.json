@@ -9,7 +9,7 @@
     "files": [
         "README.md",
         "ns.ts",
-        "wifi.ts"
+        "robotic.ts"
     ],
     "testFiles": [
         "tests.ts"
