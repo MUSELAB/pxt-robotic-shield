@@ -1,64 +1,47 @@
-# Muselab IOT Shield
+# Muselab Robotic plugin 
 
-A PXT library for Muse IOT Shield
+A PXT plugin library for Muselab wifi IoT Robotic shield
 
 ## Blocks
 
-### 1. Initialize WiFi IoT Shield
-
-Sets up the Muselab WiFi IoT Shield used for the micro:bit.
+### 1. Turn on motor
 
 ```sig
-MuseIoT.initializeWifi()
+MuseRobotic.motorOn(MuseRobotic.Motors.Motor1, MuseRobotic.MotorDirection.Forward, 50)
 ```
 
-### 2. Set WiFi
+Here we turn on motor1 with forward direction in 50% speed.
 
-Connect the Muselab WiFi IoT Shield to the WiFi (Home router)
+### 2. Turn off motor
 
 ```sig
-MuseIoT.setWifi("muselab", "12345678")
+MuseRobotic.motorOff(MuseRobotic.Motors.Motor1)
 ```
 
-Here we take "muselab" as router SSID and "12345678" as router password.
-
-
-### 3. Set WiFi hotspot
-
-Configure the Muselab WiFi IoT Shield as a hotspot.
+### 3. Control 180° servo
 
 ```sig
-MuseIoT.setWifiHotspot("muselab", "12345678")
+MuseRobotic.control180Servo(MuseRobotic.Servo.Servo5, 90)
 ```
 
-For the hotspot, here we take "muselab" as SSID and "12345678" as password.
+Here we control 180° servo (pin D5) to degree 90.
 
-
-### 4. Connect to ThingSpeak
-
-Upload data to ThingSpeak
+### 4. Control 360° servo
 
 ```sig
-MuseIoT.sendThingspeak("asdasdasdasdasdasd", 0, 0)
+MuseRobotic.control360Servo(MuseRobotic.Servo.Servo6, MuseRobotic.ServoDirection.clockwise, 80)
 ```
 
-Here we take "asdasdasdasdasdasd" as the ThingSpeak key, 0 as field1 value and 0 as field2 value.
+Here we turn control 360° servo (pin D6) with clockwise direction in 80% speed.
 
-
-### 5. Connect to IFTTT
-
-Trigger the IFTTT cloud event such as email, sms and so on.
+### 5. Get the Joystick value (x-axis, y-axis, red button, green button)
 
 ```sig
-    MuseIoT.sendIFTTT(
-    "asdasdasdasdasdasd",
-    "email",
-    0,
-    0
-    )
+x = MuseRobotic.ReadJoystick_x()
+y = MuseRobotic.ReadJoystick_y()
+red = MuseRobotic.ReadRedbutton()
+green = MuseRobotic.ReadGreenbutton()
 ```
-
-Here we take "asdasdasdasdasdasd" as IFTTT key, email as event name, 0 as value1 and 0 as value2.
 
 ## License
 

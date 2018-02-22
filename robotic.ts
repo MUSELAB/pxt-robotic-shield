@@ -15,6 +15,29 @@ namespace MuseRobotic {
         //% block="motor 2"
         Motor2
     }
+	
+	export enum ServoDirection {
+        //% block="clockwise"
+        clockwise,
+        //% block="anti-clockwise"
+        anticlockwise
+    }
+
+    export enum Servo {
+        //% blockId=muselab_servo_five
+        //% block="5"
+        Servo5 = 5,
+        //% blockId=muselab_servo_six
+        //% block="6"
+        Servo6 = 6,
+		//% blockId=muselab_servo_seven
+        //% block="7"
+        Servo7 = 7,
+		//% blockId=muselab_servo_eight
+        //% block="8"
+        Servo8 = 8
+		
+    }
 
 	/**
      * Turns on motor specified by eMotors in the direction specified
@@ -25,9 +48,10 @@ namespace MuseRobotic {
 	 * @param speed how fast to spin the motor
      */
     //% blockId=muselab_motor_on
-    //% block="Turn %motor|on direction %dir|speed %speed"
+    //% block="Turn on %motor| direction %dir|speed %speed"
     //% speed.min=0 speed.max=100
 	//% weight=70	
+	//% blockGap=7
     export function motorOn(motor: Motors, dir: MotorDirection, speed: number): void {
 		
         let OutputVal = Math.clamp(0, 100, speed) * 10;
@@ -81,62 +105,57 @@ namespace MuseRobotic {
         }
     }
 	
-    //% blockId=muselab_180servo
+    //%blockId=muselab_180servo
     //% block="Control 180° servo pin %pin| degree %degree"
-	//% weight=50	
-    export function control180Servo(pin: number, degree: number): void {
+	//% degree.min=0 degree.max=180
+	//% weight=50
+	//% blockGap=7	
+    export function control180Servo(pin: Servo, degree: number): void {
         serial.writeLine("(AT+servo_180?pin="+pin+"&degree="+degree+")");
     }	
-
+	
     //%blockId=muselab_360servo
     //% block="Control 360° servo pin %pin| direction %direction| speed %speed"
+	//% speed.min=0 speed.max=100
 	//% weight=45	
-    export function control360Servo(pin: number, direction: string, speed: number): void {
-        serial.writeLine("(AT+servo_360?pin="+pin+"&direction="+direction+"&speed="+speed+")");
-    }
-
-	//%subcategory=More
-    //%blockId=muselab_battery
-    //%block="Get battery level"
-	//% weight=40	
-    export function sendBattery(): void {
-        serial.writeLine("(AT+battery)");
-    }	
-	
-		
-	//%subcategory=More
-    //%blockId=muselab_version
-    //%block="Get firmware version"
-	//% weight=39	
-    export function sendVersion(): void {
-        serial.writeLine("(AT+version)");
+    export function control360Servo(pin: Servo, direction: ServoDirection, speed: number): void {
+		switch(direction){
+			case ServoDirection.clockwise:
+                serial.writeLine("(AT+servo_360?pin="+pin+"&direction=clockwise&speed="+speed+")");
+                break
+            case ServoDirection.anticlockwise:
+                serial.writeLine("(AT+servo_360?pin="+pin+"&direction=anticlockwise&speed="+speed+")");
+                break
+		}
+        
     }
 	
-	// -------------- 5. General ----------------
-	//%subcategory=More
-    //%blockId=muselab_at
-    //%block="Send AT command %command"
-	//% weight=30	
-    export function sendAT(command: string): void {
-        serial.writeLine(command);
-		flag = false
+	//% blockId="readjoystick_x" block="Joystick x-axis value"
+	//% weight=44
+	//% blockGap=7
+    export function ReadJoystick_x(): number {
+        return pins.analogReadPin(AnalogPin.P0);
     }
 	
-	//%subcategory=More
-    //%blockId=muselab_test
-    //%block="Send AT test"
-	//% weight=20	
-    export function sendTest(): void {
-        serial.writeLine("(AT+testing)");
+	//% blockId="readjoystick_y" block="Joystick y-axis value"
+	//% weight=43
+	//% blockGap=7
+    export function ReadJoystick_y(): number {
+        return pins.analogReadPin(AnalogPin.P1);
     }
 	
-	//%subcategory=More
-    //%blockId=muselab_deep_sleep
-    //%block="Set deep sleep %second| second"
-	//% weight=15	
-    export function setDeepSleep(second: number): void {
-        serial.writeLine("(AT+deepsleep?time="+second+")");
-    }	
-		
+	//% blockId="readredbutton" block="Red press button"
+	//% weight=42
+	//% blockGap=7
+    export function ReadRedbutton(): number {
+        return pins.digitalReadPin(DigitalPin.P12);
+    }
+	
+	//% blockId="readgreenbutton" block="Green press button"
+	//% weight=41
+	//% blockGap=7
+    export function ReadGreenbutton(): number {
+        return pins.digitalReadPin(DigitalPin.P8);
+    }
 	
 }
