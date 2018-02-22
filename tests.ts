@@ -1,32 +1,21 @@
 serial.onDataReceived(serial.delimiters(Delimiters.NewLine), () => {
     OLED.showString(serial.readLine())
 })
-input.onButtonPressed(Button.AB, () => {
-    MuseIOT.setWifi("muselab", "12345678")
-})
 input.onButtonPressed(Button.A, () => {
-    MuseIOT.sendThingspeak("XXXXXXXXXXXXXX", 80, 0)
+    MuseRobotic.control180Servo(MuseRobotic.Servo.Servo5, 0)
+    MuseRobotic.control360Servo(MuseRobotic.Servo.Servo6, MuseRobotic.ServoDirection.clockwise, 100)
 })
 input.onButtonPressed(Button.B, () => {
-    MuseIOT.sendIFTTT(
-    "XXXXXXXXXXXXXXXXXX",
-    "email",
-    0,
-    0
-    )
+    MuseRobotic.control180Servo(MuseRobotic.Servo.Servo5, 180)
+    MuseRobotic.control360Servo(MuseRobotic.Servo.Servo6, MuseRobotic.ServoDirection.anticlockwise, 100)
 })
-input.onPinPressed(TouchPin.P0, () => {
-    MuseIOT.sendBattery()
-})
-input.onPinPressed(TouchPin.P1, () => {
-    MuseIOT.sendTest()
-})
-input.onPinPressed(TouchPin.P2, () => {
-    MuseIOT.controlServo(5, 100)
-})
-basic.showIcon(IconNames.Angry)
+MuseIoT.initializeWifi()
 OLED.init(32, 128)
-MuseIOT.initializeWifi()
 basic.forever(() => {
-	
+    MuseRobotic.motorOn(MuseRobotic.Motors.Motor1, MuseRobotic.MotorDirection.Forward, 100)
+    MuseRobotic.motorOn(MuseRobotic.Motors.Motor2, MuseRobotic.MotorDirection.Forward, 100)
+    basic.pause(500)
+    MuseRobotic.motorOn(MuseRobotic.Motors.Motor1, MuseRobotic.MotorDirection.Backward, 100)
+    MuseRobotic.motorOn(MuseRobotic.Motors.Motor2, MuseRobotic.MotorDirection.Backward, 100)
+    basic.pause(500)
 })
