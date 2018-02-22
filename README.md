@@ -18,29 +18,29 @@ Here we turn on motor1 with forward direction in 50% speed.
 MuseRobotic.motorOff(MuseRobotic.Motors.Motor1)
 ```
 
-### 3. Control 180 servo
+### 3. Control 180° servo
 
 ```sig
 MuseRobotic.control180Servo(MuseRobotic.Servo.Servo5, 90)
 ```
 
-Here we turn control pin D5 of 180° servo to degree 90.
+Here we control 180° servo (pin D5) to degree 90.
 
-### 4. Control 360 servo
+### 4. Control 360° servo
 
 ```sig
 MuseRobotic.control360Servo(MuseRobotic.Servo.Servo6, MuseRobotic.ServoDirection.clockwise, 80)
 ```
 
-Here we turn control pin D6 of 360° servo with clockwise direction in 80% speed.
+Here we turn control 360° servo (pin D6) with clockwise direction in 80% speed.
 
 ### 5. Get the Joystick value (x-axis, y-axis, red button, green button)
 
 ```sig
-    x = MuseRobotic.ReadJoystick_x()
-    y = MuseRobotic.ReadJoystick_y()
-    red = MuseRobotic.ReadRedbutton()
-    green = MuseRobotic.ReadGreenbutton()
+x = MuseRobotic.ReadJoystick_x()
+y = MuseRobotic.ReadJoystick_y()
+red = MuseRobotic.ReadRedbutton()
+green = MuseRobotic.ReadGreenbutton()
 ```
 
 ## License
