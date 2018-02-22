@@ -18,9 +18,9 @@ namespace MuseRobotic {
 	
 	export enum ServoDirection {
         //% block="clockwise"
-        clockwise,
+        clockwise = "clockwise",
         //% block="anti-clockwise"
-        anticlockwise
+        anticlockwise = "anticlockwise"
     }
 
     export enum Servo {
