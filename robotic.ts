@@ -134,14 +134,14 @@ namespace MuseRobotic {
 	//% weight=44
 	//% blockGap=7
     export function ReadJoystick_x(): number {
-        return pins.analogReadPin(AnalogPin.P0);
+        return pins.map(pins.analogReadPin(AnalogPin.P0),0,1023,100,900);
     }
 	
 	//% blockId="readjoystick_y" block="Joystick y-axis value"
 	//% weight=43
 	//% blockGap=7
     export function ReadJoystick_y(): number {
-        return pins.analogReadPin(AnalogPin.P1);
+        return pins.map(pins.analogReadPin(AnalogPin.P1),0,1023,100,900);
     }
 	
 	//% blockId="readredbutton" block="Red press button"
