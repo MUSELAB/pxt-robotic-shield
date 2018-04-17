@@ -120,11 +120,20 @@ namespace MuseRobotic {
 	//% weight=45	
     export function control360Servo(pin: Servo, direction: ServoDirection, speed: number): void {
 		switch(direction){
-			case ServoDirection.clockwise:
-                serial.writeLine("(AT+servo_360?pin="+pin+"&direction=clockwise&speed="+speed+")");
+			case ServoDirection.clockwise:                
+				if (speed == 0) {
+					serial.writeLine("(AT+digital?pin="+pin+"&intensity="+speed+")");
+				} else {
+					serial.writeLine("(AT+servo_360?pin="+pin+"&direction=clockwise&speed="+speed+")");
+				}
                 break
+				
             case ServoDirection.anticlockwise:
-                serial.writeLine("(AT+servo_360?pin="+pin+"&direction=anticlockwise&speed="+speed+")");
+                if (speed == 0) {
+					serial.writeLine("(AT+digital?pin="+pin+"&intensity="+speed+")");
+				} else {
+					serial.writeLine("(AT+servo_360?pin="+pin+"&direction=anticlockwise&speed="+speed+")");
+				}
                 break
 		}
         
