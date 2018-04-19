@@ -121,16 +121,16 @@ namespace MuseRobotic {
     export function control360Servo(pin: Servo, direction: ServoDirection, speed: number): void {
 		switch(direction){
 			case ServoDirection.clockwise:                
-				if (speed == 0) {
-					serial.writeLine("(AT+digital?pin="+pin+"&intensity="+speed+")");
+				if (speed <= 10) {
+					serial.writeLine("(AT+digital?pin="+pin+"&intensity=0)");
 				} else {
 					serial.writeLine("(AT+servo_360?pin="+pin+"&direction=clockwise&speed="+speed+")");
 				}
                 break
 				
             case ServoDirection.anticlockwise:
-                if (speed == 0) {
-					serial.writeLine("(AT+digital?pin="+pin+"&intensity="+speed+")");
+                if (speed <= 10) {
+					serial.writeLine("(AT+digital?pin="+pin+"&intensity=0)");
 				} else {
 					serial.writeLine("(AT+servo_360?pin="+pin+"&direction=anticlockwise&speed="+speed+")");
 				}
@@ -162,9 +162,26 @@ namespace MuseRobotic {
 	
 	//% blockId="readgreenbutton" block="Green press button"
 	//% weight=41
-	//% blockGap=7
     export function ReadGreenbutton(): number {
         return pins.digitalReadPin(DigitalPin.P8);
     }
+	
+	//%blockId=muselab_digital
+    //% block="Set digital pin %pin| value %value"
+	//% value.min=0 value.max=1
+	//% weight=40
+	//% blockGap=7	
+    export function setDigital(pin: Servo, value: number): void {
+        serial.writeLine("(AT+digital?pin="+pin+"&intensity="+value+")");
+    }	
+	
+	//%blockId=muselab_pwm
+    //% block="Set pwm pin %pin| intensity %intensity"
+	//% intensity.min=0 intensity.max=1023
+	//% weight=39
+	//% blockGap=7	
+    export function setPwm(pin: Servo, intensity: number): void {
+        serial.writeLine("(AT+pwm?pin="+pin+"&intensity="+intensity+")");
+    }	
 	
 }
