@@ -9,10 +9,10 @@ namespace MuseRobotic {
 
     export enum Motors {
         //% blockId=muselab_motor_one
-        //% block="motor1"
+        //% block="motor 1"
         Motor1,
         //% blockId=muselab_motor_two
-        //% block="motor2"
+        //% block="motor 2"
         Motor2
     }
 	
