@@ -1,4 +1,4 @@
-namespace MuseRobotic {		
+namespace MuseRover {		
 		
     export enum MotorDirection {
         //% block="forward"
