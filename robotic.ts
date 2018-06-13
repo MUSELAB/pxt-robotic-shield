@@ -9,10 +9,10 @@ namespace MuseRobotic {
 
     export enum Motors {
         //% blockId=muselab_motor_one
-        //% block="motor 1"
+        //% block="motor1"
         Motor1,
         //% blockId=muselab_motor_two
-        //% block="motor 2"
+        //% block="motor2"
         Motor2
     }
 	
@@ -48,7 +48,7 @@ namespace MuseRobotic {
 	 * @param speed how fast to spin the motor
      */
     //% blockId=muselab_motor_on
-    //% block="Turn on %motor| direction %dir|speed %speed"
+    //% block="Turn on motor shield %motor| direction %dir|speed %speed"
     //% speed.min=0 speed.max=100
 	//% weight=70	
 	//% blockGap=7
@@ -90,7 +90,7 @@ namespace MuseRobotic {
      * @param motor :which motor to turn off
      */
     //% blockId=muselab_motor_off
-    //% block="Turn off %motor"
+    //% block="Turn off motor shield %motor"
 	//% weight=60	
     export function motorOff(motor: Motors): void {
         switch (motor) {
