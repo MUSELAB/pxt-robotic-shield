@@ -1,6 +1,6 @@
 {
     "name": "pxt-muselab-plugin",
-    "version": "0.1.5",
+    "version": "0.1.6",
     "description": "Plugin for MuseIoT using muselab products in PXT",
     "license": "MIT",
     "dependencies": {

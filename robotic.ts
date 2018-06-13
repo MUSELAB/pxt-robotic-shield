@@ -23,22 +23,6 @@ namespace MuseRobotic {
         anticlockwise
     }
 
-    export enum Servo {
-        //% blockId=muselab_servo_five
-        //% block="5"
-        Servo5 = 5,
-        //% blockId=muselab_servo_six
-        //% block="6"
-        Servo6 = 6,
-		//% blockId=muselab_servo_seven
-        //% block="7"
-        Servo7 = 7,
-		//% blockId=muselab_servo_eight
-        //% block="8"
-        Servo8 = 8
-		
-    }
-
 	/**
      * Turns on motor specified by eMotors in the direction specified
      * by eDirection, at the requested speed 
@@ -131,23 +115,5 @@ namespace MuseRobotic {
     export function ReadGreenbutton(): number {
         return pins.digitalReadPin(DigitalPin.P8);
     }
-	
-	//%blockId=muselab_digital
-    //% block="Set digital pin %pin| value %value"
-	//% value.min=0 value.max=1
-	//% weight=40
-	//% blockGap=7	
-    export function setDigital(pin: Servo, value: number): void {
-        serial.writeLine("(AT+digital?pin="+pin+"&intensity="+value+")");
-    }	
-	
-	//%blockId=muselab_pwm
-    //% block="Set pwm pin %pin| intensity %intensity"
-	//% intensity.min=0 intensity.max=1023
-	//% weight=39
-	//% blockGap=7	
-    export function setPwm(pin: Servo, intensity: number): void {
-        serial.writeLine("(AT+pwm?pin="+pin+"&intensity="+intensity+")");
-    }	
 	
 }
