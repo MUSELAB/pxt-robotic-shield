@@ -23,6 +23,22 @@ namespace MuseRobotic {
         anticlockwise
     }
 
+    export enum Servo {
+        //% blockId=muselab_servo_five
+        //% block="5"
+        Servo5 = 5,
+        //% blockId=muselab_servo_six
+        //% block="6"
+        Servo6 = 6,
+		//% blockId=muselab_servo_seven
+        //% block="7"
+        Servo7 = 7,
+		//% blockId=muselab_servo_eight
+        //% block="8"
+        Servo8 = 8
+		
+    }
+
 	/**
      * Turns on motor specified by eMotors in the direction specified
      * by eDirection, at the requested speed 
