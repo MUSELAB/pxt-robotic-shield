@@ -23,22 +23,6 @@ namespace MuseRobotic {
         anticlockwise
     }
 
-    export enum Servo {
-        //% blockId=muselab_servo_five
-        //% block="5"
-        Servo5 = 5,
-        //% blockId=muselab_servo_six
-        //% block="6"
-        Servo6 = 6,
-		//% blockId=muselab_servo_seven
-        //% block="7"
-        Servo7 = 7,
-		//% blockId=muselab_servo_eight
-        //% block="8"
-        Servo8 = 8
-		
-    }
-
 	/**
      * Turns on motor specified by eMotors in the direction specified
      * by eDirection, at the requested speed 
@@ -103,40 +87,6 @@ namespace MuseRobotic {
                 pins.analogWritePin(AnalogPin.P15, 0);
                 break
         }
-    }
-	
-    //%blockId=muselab_180servo
-    //% block="Control 180° servo pin %pin| degree %degree"
-	//% degree.min=0 degree.max=180
-	//% weight=50
-	//% blockGap=7	
-    export function control180Servo(pin: Servo, degree: number): void {
-        serial.writeLine("(AT+servo_180?pin="+pin+"&degree="+degree+")");
-    }	
-	
-    //%blockId=muselab_360servo
-    //% block="Control 360° servo pin %pin| direction %direction| speed %speed"
-	//% speed.min=0 speed.max=100
-	//% weight=45	
-    export function control360Servo(pin: Servo, direction: ServoDirection, speed: number): void {
-		switch(direction){
-			case ServoDirection.clockwise:                
-				if (speed <= 10) {
-					serial.writeLine("(AT+digital?pin="+pin+"&intensity=0)");
-				} else {
-					serial.writeLine("(AT+servo_360?pin="+pin+"&direction=clockwise&speed="+speed+")");
-				}
-                break
-				
-            case ServoDirection.anticlockwise:
-                if (speed <= 10) {
-					serial.writeLine("(AT+digital?pin="+pin+"&intensity=0)");
-				} else {
-					serial.writeLine("(AT+servo_360?pin="+pin+"&direction=anticlockwise&speed="+speed+")");
-				}
-                break
-		}
-        
     }
 	
 	//% blockId="readjoystick_x" block="Joystick x-axis value"
